@@ -57,8 +57,8 @@ public class LinkedList {
     // gets the ith node according to index
     public String get(int index) {
         String returnItem = null;
-
-        if (index > 0) {
+       
+        if (size() > 0 && index > 0) { // test those edge cases
             Node currNode = head;
             for (int i = 1; i < index; i++) {
                 currNode = currNode.getNext();

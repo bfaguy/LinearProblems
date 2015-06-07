@@ -38,4 +38,12 @@ public class LinkedListTest {
         assertThat(ll.get(1), is(nullValue()));
     }
     
+    @Test
+    public void testGetNegativeIndex() {
+        LinkedList ll = new LinkedList();
+        ll.addLast("one");
+        assertThat(ll.get(0), is(nullValue()));
+        assertThat(ll.get(-1), is(nullValue()));
+    }
+    
 }

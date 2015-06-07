@@ -14,16 +14,25 @@ public class LinkedList {
         } else {
             Node currNode = head;
             while (currNode.getNext() != null) {
-                currNode.setNext(new Node(item));
-            }
-            
-            /* compare with this?
-            while (currNode != null) {
                 currNode = currNode.getNext();
             }
-            currNode.setNext(new Node(item));
-            */
+            currNode.next = new Node(item);
         }
+    }
+    
+    public int size() {
+        // compare to storing it as a variable
+        int size = 1;
+        if (head == null) {
+            return 0;
+        } else {
+            Node currNode = head;
+            while (currNode.getNext() != null) {
+                currNode = currNode.getNext();
+                size++;
+            }
+        }
+        return size;
     }
 
     protected void addFirst(String value) {
@@ -45,19 +54,40 @@ public class LinkedList {
         return returnValue;
     }
 
-    public Node get(int index) {
-        if (index == 1)
-            return head;
-        else {
-            return getRecursive(head.getNext(), index-1);
+    // gets the ith node according to index
+    public String get(int index) {
+        String returnItem = null;
+
+        if (index > 0) {
+            Node currNode = head;
+            for (int i = 1; i < index; i++) {
+                currNode = currNode.getNext();
+            }
+            returnItem = currNode.getValue();
         }
+        return returnItem;
     }
 
-    private Node getRecursive(Node node, int index) {
-        if (index == 1) {
-            return node;
-        } else {
-           return getRecursive(node.getNext(), index-1);
+    private static class Node {
+
+        private String value;
+        private Node next;
+
+        public Node(String value) {
+            this.value = value;
+            this.next = null;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node newNode) {
+            this.next = newNode;
         }
     }
 }

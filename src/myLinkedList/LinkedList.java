@@ -90,4 +90,8 @@ public class LinkedList {
             this.next = newNode;
         }
     }
+
+    public Boolean isEmpty() {
+        return head == null;
+    }
 }
